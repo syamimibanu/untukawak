@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to top, #ff77ff, #ff4081);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        /* Message styling */
+        .message {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+        /* Add a subtle fade-in animation for the text */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* Image container and styling */
+        .image-container {
+            margin-bottom: 30px;
+            animation: bounceIn 1.5s ease-out;
+        }
+        /* Image bounce-in animation */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .image-container img {
+            width: 220px;
+            height: 220px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+        /* Button styling */
+        button {
+            font-size: 18px;
+            padding: 15px 30px;
+            margin: 15px;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(to top, #ff4081, #ff77ff);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff1e73;
+            transform: translateY(-5px);
+        }
+        button:disabled {
+            cursor: not-allowed;
+            background-color: #9e4e89;
+        }
+        /* Glow effect for buttons */
+        button:active {
+            box-shadow: 0 0 15px 5px rgba(255, 0, 128, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">
+        Do you want to know something? 💖
+    </div>
+
+    <div class="image-container">
+        <img src="cute1.png" alt="Cute Image 1" id="image1">
+        <img src="cute2.png" alt="Cute Image 2" id="image2" style="display:none;">
+    </div>
+
+    <button id="yesButton" onclick="showMessage('yes')">Yes</button>
+    <button id="noButton" onclick="showMessage('no')">No</button>
+
+    <script>
+        function showMessage(answer) {
+            if (answer === 'yes') {
+                document.querySelector('.message').textContent = "I love you! 💖";
+                document.getElementById('noButton').disabled = true;
+                document.getElementById('image1').style.display = 'block';  // Show the first image
+
+                // After 2 seconds, change the message to "hueheuheuhe tahu dah" and display cute2.png
+                setTimeout(function() {
+                    document.querySelector('.message').textContent = "hueheuheuhe tahu dah";
+                    document.getElementById('image1').style.display = 'none'; // Hide the first image
+                    document.getElementById('image2').style.display = 'block'; // Show the second image
+                }, 2000); // 2 seconds delay for a fun effect
+            } else if (answer === 'no') {
+                document.getElementById('noButton').disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
